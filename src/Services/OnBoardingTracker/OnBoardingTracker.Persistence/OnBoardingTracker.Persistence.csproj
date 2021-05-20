@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>a30dc107-58f1-4307-966a-479421b31e23</UserSecretsId>
+		<NoWarn>1701;1702;1591;SA1200;SA1201;EF1001;SA1118;SA1208;SA1210;SA1202;SA1633;SA1100;SA1600;SA1101;SA1611;SA1519;SA1310;SA1615;SA1503;SA1515;SA1005;SA1009;SA1652;SA1602;CA2007;CA2227;CA1031;CS0114</NoWarn>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+		<ProjectGuid>{88CD80E8-977E-46AA-B583-B9E1801D365E}</ProjectGuid>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.0" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\OnBoardingTracker.Domain\OnBoardingTracker.Domain.csproj" />
+		<ProjectReference Include="..\OnBoardingTracker.Infrastructure\OnBoardingTracker.Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>

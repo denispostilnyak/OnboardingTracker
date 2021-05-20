@@ -1,0 +1,15 @@
+<mat-card class="vacancy-card d-flex flex-column">
+  <mat-card-title class="vacancy-card__title">
+    <span>
+      {{ vacancy.title | titlecase }}
+    </span>
+  </mat-card-title>
+  <mat-card-content class="mat-card-content vacancy-card__content-container d-flex flex-column justify-content-between">
+    <img class="vacancy-card__img" [src]="vacancy.vacancyPictureUrl || defaultPicture" />
+    <div class="vacancy-card__vacancy-info">
+      <span>{{ vacancy.maxSalary | currency }}</span>
+      <span class="spacer"></span>
+      <span>{{ vacancy.workExperience }}+ Yrs</span>
+    </div>
+  </mat-card-content>
+</mat-card>

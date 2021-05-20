@@ -1,0 +1,94 @@
+@import '../../shared/styles/colors';
+@import '../../shared/styles/list-items/variables';
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+.panel {
+  margin-bottom: 15px;
+}
+
+.header {
+  padding-left: 0;
+  height: 65px;
+}
+
+.panel-title {
+  align-items: center;
+  border-radius: $list-item-border-radius;
+  transition: background-color .2s ease;
+}
+
+.panel-title__info {
+  flex-flow: column nowrap;
+  flex: 0 1 50%;
+}
+
+.panel-title__info__name {
+  margin-left: 0px;
+}
+
+
+.panel-image {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  border-radius: $list-item-image-border-radius;
+  width: $list-item-image-max-width;
+  height: $list-item-image-max-height;
+}
+
+.panel-title__info__adittional {
+  display: flex;
+  flex-direction: row;
+}
+
+.text-muted{
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+  color: $card-muted-text-color;
+}
+
+.description {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.danger{
+  border-radius: .42rem;
+  margin-right: 20px;
+  background-color: #ffe2e5;
+  color: #f64e60;
+}
+
+.edit {
+  border-radius: .42rem;
+  color: #fff;
+  background-color: #3699ff;
+}
+
+.panel-title__info__name {
+  margin-left: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30vw;
+}
+.content {
+  max-width: 100%;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+@include media-breakpoint-between(xs,sm){
+  .description{
+    display: none !important;
+  }
+}

@@ -1,0 +1,90 @@
+@import "../shared/styles/colors";
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+@include media-breakpoint-down(md) {
+    .head-toolbar__label {
+        font-size: 14px;
+    }
+    .head-toolbar__auth-button {
+        font-size: 12px;
+        margin: 1rem;
+        background-color: $toolbar-login-button-color;
+    }
+}
+.breadcrumbs-container{
+  position: fixed;
+  top:64px;
+  width: 100%;
+  z-index: 10;
+  padding:15px;
+  padding: 0 2rem;
+  background-color: white;
+  font-size: 16px;
+}
+.content-container{
+  margin-top: 130px;
+}
+.head-toolbar__label {
+    margin-left: 1rem;
+}
+.head-toolbar__icon {
+    width: 30px;
+    height: auto;
+    border-radius: 50%;
+}
+.head-toolbar {
+    top: 0;
+    position: fixed;
+    z-index: 10;
+    background-color: white;
+    border-bottom: 1px solid #ebedf3;
+    height: 64px !important;
+}
+.head-toolbar__link-button {
+    background-color: white;
+}
+.spacer {
+    flex: 1 1 auto;
+}
+
+.language-image {
+    width: 25px;
+    max-height: 25px;
+    object-fit: fill;
+}
+
+.language-button {
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: none;
+    height: 10px;
+}
+
+.head-tollbar__auth-button {
+    margin: 1rem;
+    background-color: $toolbar-login-button-color;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-profile__profile-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.user-profile__name {
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+.footer {
+    text-align: center;
+}

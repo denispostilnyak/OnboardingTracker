@@ -1,0 +1,52 @@
+<div class="recruiter-dialog__main-content-container">
+  <button mat-icon-button class="close-button" [mat-dialog-close]="">
+      <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+  <h2 mat-dialog-title class="recruiter-dialog__title">{{data.title}}</h2>
+  <div mat-dialog-content class="recruiter-dialog__main-content">
+      <perfect-scrollbar>
+          <form [formGroup]="dialogFormGroup" class="recruiter-dialog__form">
+            <mat-form-field>
+              <mat-label>First Name</mat-label>
+              <input matInput autocomplete="off" class="recruiter-dialog__input" [(ngModel)]="recruiter.firstName" formControlName="firstName" />
+              <mat-error *ngIf="firstName?.invalid">First name is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Last Name</mat-label>
+              <input matInput autocomplete="off" class="recruiter-dialog__input" [(ngModel)]="recruiter.lastName" formControlName="lastName" />
+              <mat-error *ngIf="lastName?.invalid">Last name is required</mat-error>
+            </mat-form-field>
+            <mat-form-field >
+              <mat-label>Email</mat-label>
+              <input matInput autocomplete="off" [(ngModel)]="recruiter.email" formControlName="email"
+                class="recruiter-dialog__input" />
+              <mat-error *ngIf="email?.hasError('required')">Email is required</mat-error>
+              <mat-error *ngIf="email?.hasError('email')"> Email is not valid</mat-error>
+            </mat-form-field>
+            <div *ngIf="!recruiter.pictureUrl">
+              <div class="file-drop-area d-flex flex-column align-items-stretch">
+                <input class="file-input" type="file" formControlName="picture">
+                <span class="recruiter-dialog__fake-btn">Choose file</span>
+                <span class="recruiter-dialog__file-name">{{file ? file.name : ' or drag and drop file here' }}</span>
+              </div>
+            </div>
+            <div *ngIf="recruiter.pictureUrl">
+              <div class="avatar-container" (click)="file.click()">
+                <input hidden class="file-hide" #file accept="image/*" type="file">
+                <img class="avatar avatar-style" [src]="previewImg || recruiter.pictureUrl">
+                <div class="img-text">
+                    Upload
+                </div>
+            </div>
+            </div>
+              <div class="recruiter-dialog__actions">
+                  <button mat-raised-button [disabled]="!dialogFormGroup.valid || uploadNotFinished" color="primary"
+                   (click)="closeWithPost()" class="recruiter-dialog__confirm-button">
+                      <mat-spinner diameter="20" *ngIf="uploadNotFinished" class="mat-spinner--center"></mat-spinner>
+                      Confirm
+                  </button>
+              </div>
+          </form>
+      </perfect-scrollbar>
+  </div>
+</div>

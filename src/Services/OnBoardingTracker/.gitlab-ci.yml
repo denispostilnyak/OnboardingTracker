@@ -1,0 +1,91 @@
+image: "docker:latest"
+services: 
+  - "docker:dind"
+stages: 
+  - build
+  - test
+  - deploy
+
+variables: 
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+  docker_container_name: onboardingtracker
+  docker_container_port: 5097
+  docker_host: $dev_app_srv_0
+  docker_image_name: "registry.gitlab.com/devoxsoftware/internal/onboardingtracker:latest"
+  docker_registry_name: registry.gitlab.com
+  docker_registry_password: aztMxt-3ZYzUBW9bQvNy
+  docker_registry_username: gitlab+deploy-token-243950
+  tests_folder_path: ./src/Services/OnBoardingTracker/OnBoardingTracker.Tests
+
+build-services: 
+  before_script: 
+    - "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $docker_registry_name"
+  only: 
+    - develop
+  script: 
+    - "docker build -t $docker_image_name $DOCKERFILE"
+    - "docker push $docker_image_name"
+  stage: build
+  when: manual
+
+deploy-services: 
+  before_script: 
+    - "which ssh-agent || ( apk update && apk add openssh-client )"
+    - "eval $(ssh-agent -s)"
+    - "echo \"$SSH_PRIVATE\" | tr -d '\\r' | ssh-add - > /dev/null"
+    - "mkdir -p ~/.ssh"
+    - "chmod 700 ~/.ssh"
+    - "ssh-keyscan gitlab.com >> ~/.ssh/known_hosts"
+    - "ssh-keyscan $docker_host >> ~/.ssh/known_hosts"
+    - "chmod 644 ~/.ssh/known_hosts"
+  only: 
+    - develop
+  script: 
+    - "ssh -tt root@$docker_host bash -c \"'docker rm $docker_container_name --force;docker login $docker_registry_name -u $docker_registry_username -p  $docker_registry_password;docker pull $docker_image_name;docker run -p $docker_container_port:80 -p 5997:443 --name $docker_container_name --network=customnetwork -e ASPNETCORE_ENVIRONMENT=Staging -e Infrastructure__Storage__AmazonS3__SecretAccessKey=$AMAZON_S3_SECRET -e Db__ConnectionString=$CONNECTION_STRING -e Email__SmtpPassword=$SMTP_PASSWORD -e Serilog__WriteTo__0__Args__ConnectionString=$CONNECTION_STRING -e Serilog__WriteTo__1__Args__customerToken=$LOGGLY_TOKEN -e Swagger__Authorization__Implicit__ClientSecret=$OAUTH_CLIENT_SECRET -d $docker_image_name'\""
+  stage: deploy
+  when: manual
+
+test-pages: 
+  artifacts: 
+      expire_in: "30 days"
+      paths: 
+        - public
+  needs: 
+    - test-services
+  only: 
+    - master
+    - develop
+  script: 
+    - "mv artifacts/html/ public/"
+  stage: deploy
+  when: manual
+
+test-services: 
+  artifacts: 
+    expire_in: "30 days"
+    paths: 
+      - artifacts/*test-result.xml
+      - artifacts/coverage.cobertura.xml
+      - artifacts/html/*
+    reports: 
+      cobertura: 
+        - artifacts/coverage.cobertura.xml
+      junit: 
+        - artifacts/*test-result.xml
+    when: always
+  image: "mcr.microsoft.com/dotnet/core/sdk:3.1"
+  needs: 
+    - build-services
+  only:   
+    - master
+    - develop
+  script: 
+    - "export PATH=\"$PATH:/root/.dotnet/tools\""
+    - "dotnet tool install --global dotnet-reportgenerator-globaltool"
+    - "dotnet test $tests_folder_path --test-adapter-path:$tests_folder_path --logger:\"junit;LogFilePath=.\\artifacts\\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose\" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=\"./artifacts/\""
+    - "reportgenerator $tests_folder_path \"-reports:$tests_folder_path/artifacts/coverage.cobertura.xml\" \"-targetdir:$tests_folder_path/artifacts/html\" -reporttypes:HTML;"
+    - "mv $tests_folder_path/artifacts/ artifacts/"
+  stage: test
+  when: manual

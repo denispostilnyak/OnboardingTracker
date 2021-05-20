@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<NoWarn>1701;1702;1591;SA1200;SA1201;SA1208;SA1210;SA1633;SA1100;SA1600;SA1101;SA1611;SA1519;SA1310;SA1615;SA1503;SA1515;SA1005;SA1009;SA1652;SA1602;CA2007;CA2227;CA1031;CS0114</NoWarn>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+		<ProjectGuid>{4682FF67-5DA6-43A7-926A-B2ED4DA678BD}</ProjectGuid>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Infrastructure\Filters\**" />
+		<EmbeddedResource Remove="Infrastructure\Filters\**" />
+		<None Remove="Infrastructure\Filters\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.0.0" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+		<PackageReference Include="FluentValidation" Version="9.2.2" />
+		<PackageReference Include="MediatR" Version="8.1.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\OnBoardingTracker.Persistence\OnBoardingTracker.Persistence.csproj" />
+	</ItemGroup>
+
+</Project>

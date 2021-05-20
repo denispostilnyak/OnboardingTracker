@@ -1,0 +1,43 @@
+<mat-expansion-panel class="panel">
+  <mat-expansion-panel-header class="header">
+    <mat-panel-title class="panel-title">
+      <img class="panel-image" [src]="vacancy.vacancyPictureUrl" />
+      <div class="panel-title__info">
+        <div class="panel-title__info__name">
+          {{ vacancy.title }}
+        </div>
+        <div class="panel-title__info__adittional">
+          <span class="text-muted d-none d-sm-inline">{{ vacancy.maxSalary | currency }}</span>
+          <span class="text-muted d-none  d-sm-flex flex-sm-row">
+            <mat-icon style="font-size: 18px">work</mat-icon> {{ vacancy.workExperience }}+
+          </span>
+          <span class="text-muted d-none d-sm-flex flex-sm-row">
+            <mat-icon style="font-size: 20px">watch_later</mat-icon> {{jobTypes[vacancy.jobTypeId]}}
+          </span>
+        </div>
+      </div>
+    </mat-panel-title>
+    <mat-panel-description class="description">
+      <button class="danger" mat-raised-button (click)="deleteVacancy()">DELETE</button>
+      <button class="edit" mat-raised-button (click)="editVacancy()">EDIT</button>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-action-row class="d-flex flex-column">
+    <div class="d-flex flex-row">
+      <span class="text-muted d-inline d-sm-none">{{ vacancy.maxSalary | currency }}</span>
+      <span class="text-muted d-flex flex-row d-sm-none">
+        <mat-icon style="font-size: 18px">work</mat-icon> {{ vacancy.workExperience }}+
+      </span>
+      <span class="text-muted d-flex flex-row d-sm-none">
+        <mat-icon style="font-size: 20px">watch_later</mat-icon> {{jobTypes[vacancy.jobTypeId]}}
+      </span>
+    </div>
+    <div class="content">
+      {{ vacancy.description}}
+    </div>
+  </mat-action-row>
+  <mat-action-row class="d-md-none px-2 d-flex flex-row justify-content-between">
+    <button class="danger mx-0" mat-raised-button (click)="deleteVacancy()">Delete</button>
+    <button class="edit" mat-raised-button (click)="editVacancy()">Edit</button>
+  </mat-action-row>
+</mat-expansion-panel>

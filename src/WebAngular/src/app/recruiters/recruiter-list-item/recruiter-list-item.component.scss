@@ -1,0 +1,56 @@
+@import "../../shared/styles/colors";
+@import "../../shared/styles/list-items/variables";
+.recruiter-list-item {
+  padding: $list-item-padding;
+  border-radius: $list-item-border-radius;
+  transition: background-color 0.2s ease;
+  margin-top: $list-item-margin;
+  margin-bottom: $list-item-margin;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);;
+}
+.recruiter-list-item__span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  width: 100%;
+}
+.recruiter-list-item:hover {
+  background-color: $card-background-color;
+}
+.mw-0 {
+  min-width: 0;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.recruiter-list-item__image {
+  margin: 0.5rem;
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+  width: $list-item-image-max-width;
+  height: $list-item-image-max-height;
+}
+.recruiter-list-item__menu-button{
+  margin-left: auto;
+}
+.recruiter-list-item__edit-icon{
+  color: $recruiters-card-font-color;
+}
+.text-muted {
+  color: $card-muted-text-color;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.danger {
+  color: $danger-color;
+}
+.edit {
+  color: #fff;
+  background-color: #3699ff;
+}

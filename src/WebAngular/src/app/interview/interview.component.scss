@@ -1,0 +1,36 @@
+.main-header{
+  padding: 5vh;
+  margin: 0 auto;
+}
+.main-header__container{
+  display:flex;
+  justify-content: center;
+}
+.mat-card-fill-parent{
+  width:100%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
+.main-header__matcard-title-container {
+  width:100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.main-header__matcard-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.horizontal-flex-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vertical-flex-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

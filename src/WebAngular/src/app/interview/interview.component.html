@@ -1,0 +1,43 @@
+<div class="main-header">
+  <div class="main-header__container">
+    <mat-card class="mat-card-fill-parent">
+      <mat-card-title>
+        <div class="main-header__matcard-title-container">
+          <span>{{title}}</span>
+          <button mat-raised-button color="primary">Add Interview</button>
+        </div>
+      </mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="vertical-flex-container">
+          <div class="horizontal-flex-container">
+            <div class="vertical-flex-container">
+              <span>Interview Date</span>
+              <span>{{interviewDate}}</span>
+              <span>{{interviewTimeSpan}}</span>
+            </div>
+            <span>
+              {{candidateName}}
+            </span>
+            <button mat-raised-button color="warn">Delete</button>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="vertical-flex-container">
+          <div class="horizontal-flex-container">
+            <div class="vertical-flex-container">
+              <span>Interview Date</span>
+              <span>{{interviewDate}}</span>
+              <span>{{interviewTimeSpan}}</span>
+            </div>
+            <span>
+              {{candidateName}}
+            </span>
+            <button mat-raised-button color="warn">Delete</button>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

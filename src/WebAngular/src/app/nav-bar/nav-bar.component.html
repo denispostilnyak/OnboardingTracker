@@ -1,0 +1,75 @@
+<div>
+<mat-toolbar class="head-toolbar">
+  <mat-toolbar-row>
+    <div class="d-block d-lg-none">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Main menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/">
+          <mat-icon>home</mat-icon>
+          <span>{{ 'home.tabs.home' | translate}}</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/vacancies">
+          <mat-icon>card_travel</mat-icon>
+          <span>{{ 'home.tabs.vacancies' | translate}}</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/recruiters">
+          <mat-icon>people</mat-icon>
+          <span>{{ 'home.tabs.recruiters' | translate}}</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/candidates">
+          <mat-icon>people</mat-icon>
+          <span>{{ 'home.tabs.candidates' | translate}}</span>
+        </button>
+      </mat-menu>
+    </div>
+    <img src="https://devoxblobs.blob.core.windows.net/general/logo.png" class="head-toolbar__icon d-inline d-sm-none">
+    <span class="head-toolbar__label d-none d-sm-inline">Onboarding Tracker</span>
+    <div class="d-none d-lg-block">
+      <button class="head-toolbar__link-button" mat-flat-button routerLink="/">
+        <span>{{ 'home.tabs.home' | translate}}</span>
+      </button>
+      <button class="head-toolbar__link-button" mat-flat-button routerLink="/vacancies">
+        <span>{{ 'home.tabs.vacancies' | translate}}</span>
+      </button>
+      <button class="head-toolbar__link-button" mat-flat-button routerLink="/recruiters">
+        <span>{{ 'home.tabs.recruiters' | translate}}</span>
+      </button>
+      <button class="head-toolbar__link-button" mat-flat-button routerLink="/candidates">
+        <span>{{ 'home.tabs.candidates' | translate}}</span>
+      </button>
+    </div>
+    <span class="spacer"></span>
+    <button (click)="translatePage('ua')" *ngIf="currentLang != 'ua'" class="language-button">
+      <img class="language-image" src="https://icons.iconarchive.com/icons/wikipedia/flags/1024/UA-Ukraine-Flag-icon.png">
+    </button>
+    <button (click)="translatePage('en')" *ngIf="currentLang != 'en'" class="language-button">
+      <img class="language-image" src="https://www.countryflags.com/wp-content/uploads/united-states-of-america-flag-png-xl.png">
+    </button>
+    <div class="user-profile">
+      <img *ngIf="user" class="user-profile__profile-img" [src]="user?.avatar">
+      <span class="user-profile__name d-none d-md-inline">{{user?.name}}</span>
+      <button *ngIf="!this.isAuthenticated" mat-raised-button class="head-tollbar__auth-button" color="accent"
+        (click)="login()">{{ 'home.login' | translate}}</button>
+      <button *ngIf="this.isAuthenticated" mat-raised-button class="head-tollbar__auth-button" color="accent"
+        (click)="logout()">{{ 'home.logout' | translate}}</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+</div>
+<div class="breadcrumbs-container">
+  <app-breadcrumbs></app-breadcrumbs>
+</div>
+<div class="content-container">
+  <router-outlet></router-outlet>
+</div>
+  <div class="footer">
+    <footer>
+      &#169;{{ 'home.footer' | translate}}
+    </footer>
+  </div>
+

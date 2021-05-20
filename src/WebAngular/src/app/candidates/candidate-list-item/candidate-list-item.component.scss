@@ -1,0 +1,123 @@
+@import '../../shared/styles/colors';
+@import '../../shared/styles/list-items/variables';
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+.candidate-list-item {
+  padding: $list-item-padding;
+  display: flex;
+  align-items: center;
+  border-radius: $list-item-border-radius;
+  transition: background-color .2s ease;
+  margin-top: $list-item-margin;
+  margin-bottom: $list-item-margin;
+  background-color: white;
+}
+.candidate-list-item:hover{
+  background-color: $vacancies-header-color;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.candidate-list-item__image {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  border-radius: $list-item-image-border-radius;
+  width: $list-item-image-max-width;
+  height: $list-item-image-max-height;
+}
+.candidate-list-item__menu-button{
+  margin-left: auto;
+}
+
+.panel-title__info__adittional {
+  display: flex;
+  flex-direction: row;
+}
+
+.text-muted{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  margin-right: 10px;
+  color: $card-muted-text-color;
+  white-space: nowrap;
+}
+
+.danger{
+  color: $danger-color;
+}
+@include media-breakpoint-between(xs,sm){
+  .description{
+    display: none !important;
+  }
+}
+
+.description {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header {
+  padding-left: 0;
+  height: 65px;
+}
+.content__information-span{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+}
+.content {
+  max-width: 100%;
+  justify-content: flex-start;
+}
+.w-100{
+  width:100%;
+}
+.mat-action-row{
+  padding: 16px 10px 16px 10px;
+}
+.title {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-row {
+  display: flex;
+  justify-content: start;
+}
+
+.panel {
+  margin-bottom: 15px;
+}
+
+.edit {
+  color: #fff;
+  background-color: #3699ff;
+}
+
+.danger{
+  margin-right: 20px;
+  background-color: #ffe2e5;
+  color: #f64e60;
+}
+
+.panel-title__info__name {
+  margin-left: 0px;
+}
+
+.panel-title {
+  align-items: center;
+  border-radius: $list-item-border-radius;
+  transition: background-color .2s ease;
+}
+
+.panel-title__info {
+  flex-flow: column nowrap;
+}

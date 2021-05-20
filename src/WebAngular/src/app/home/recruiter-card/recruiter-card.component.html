@@ -1,0 +1,19 @@
+<mat-card class="recruiter-card">
+  <mat-card-title class="recruiter-card__title">
+    <div>
+      <div class="d-flex">
+        <span>
+          {{ recruiter.firstName + ' ' + recruiter.lastName }}
+        </span>
+      </div>
+    </div>
+  </mat-card-title>
+  <mat-card-content class="recruiter-card__content-container">
+        <img
+          class="recruiter-card__img"
+          [src]="recruiter.pictureUrl || recruitersDefaultPicture"
+        />
+        <span class="recruiter-card__email"> {{ recruiter.email }} </span>
+  </mat-card-content>
+
+</mat-card>

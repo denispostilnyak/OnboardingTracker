@@ -1,0 +1,15 @@
+<div class="main">
+  <div class="card-group">
+    <div class="card-group__content">
+      <mat-spinner class="card-group__loader" *ngIf="!vacancies?.length"></mat-spinner>
+      <mat-accordion class="my-special-class">
+        <div *ngFor="let vacancy of vacancies">
+          <div>
+            <app-vacancy-list-item [vacancy]="vacancy" (deleteVacancyEvent)="onDelete($event)" (editVacancyEvent)="onEdit($event)">
+            </app-vacancy-list-item>
+          </div>
+        </div>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

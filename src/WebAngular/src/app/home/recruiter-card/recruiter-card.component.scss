@@ -1,0 +1,47 @@
+@import '../../shared/styles/colors';
+@import '../../shared/styles/cards/variables';
+
+.recruiter-card {
+  border-radius: $card-border-radius;
+  padding: 0px;
+  height: 100%;
+}
+.recruiter-card__title{
+  background-color: $recruiters-header-color;
+  font-size: $title-font-size;
+  padding: $title-text-padding;
+  border-top-left-radius: $card-border-radius;
+  border-top-right-radius: $card-border-radius;
+  margin-bottom: 0px;
+  white-space: wrap;
+  flex-grow: 1;
+}
+.d-flex{
+  display: flex;
+  flex-direction: column;
+}
+.recruiter-card__content-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  background-color:$card-background-color;
+  border-bottom-left-radius: $card-border-radius;
+  border-bottom-right-radius: $card-border-radius;
+}
+.spacer{
+  flex: 1 0 auto;
+}
+.recruiter-card__img{
+  width: 150px;
+  height: 150px;
+  object-fit: unset;
+  margin: 5px;
+}
+.recruiter-card__email{
+  color: $card-muted-text-color;
+  max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

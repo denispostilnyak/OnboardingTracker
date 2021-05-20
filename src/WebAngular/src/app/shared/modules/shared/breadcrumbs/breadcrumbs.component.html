@@ -1,0 +1,17 @@
+<div  class="d-flex flex-row align-items-center justify-content-between py-2">
+  <div>
+    <span class="page-name">{{(lastBreadcrumb | async)?.name}}</span>
+    <span class="hover">
+      <a
+      *ngFor="let breadcrumb of breadcrumbs | async"
+      [routerLink]="breadcrumb.url"
+      >{{ breadcrumb.name }}</a>
+    </span>
+
+  </div>
+  <div>
+    <button  class="mat-button" mat-raised-button (click)="pushClick()">
+      <span>{{(lastBreadcrumb | async)?.createButtonCaption}}</span>
+    </button>
+  </div>
+</div>

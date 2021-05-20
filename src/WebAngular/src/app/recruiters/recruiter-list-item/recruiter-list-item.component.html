@@ -1,0 +1,39 @@
+<div class="recruiter-list-item d-flex justify-content-between align-items-center">
+  <div class="d-flex align-items-center mw-0">
+    <div>
+      <img class="recruiter-list-item__image" [src]="recruiter.pictureUrl" />
+    </div>
+    <div class="d-flex flex-column align-items-center mw-0">
+      <span class="recruiter-list-item__span" >{{ recruiter.firstName + " " + recruiter.lastName }}</span>
+      <span class="text-muted">{{ recruiter.email }}</span>
+    </div>
+  </div>
+  <div>
+    <button class="danger mx-2 d-none d-sm-inline " mat-raised-button (click)="openDeleteRecruiterDialog()">Delete</button>
+    <button class="edit mx-2 d-none d-sm-inline " mat-raised-button (click)="openEditRecruiterDialog()">Edit</button>
+    <button mat-icon-button class="d-inline d-sm-none">
+      <mat-icon class="danger" (click)="openDeleteRecruiterDialog()">delete</mat-icon>
+    </button>
+    <button mat-icon-button class="d-inline d-sm-none">
+      <mat-icon class="recruiter-list-item__edit-icon" (click)="openEditRecruiterDialog()" >edit</mat-icon>
+    </button>
+  </div>
+  <!-- <button
+    class="recruiter-list-item__menu-button"
+    [matMenuTriggerFor]="menu"
+    mat-icon-button
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openEditRecruiterDialog()">
+      <mat-icon>edit</mat-icon>
+      <span>Edit Recruiter</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="openDeleteRecruiterDialog()">
+      <mat-icon class="danger">delete</mat-icon>
+      <span class="danger">Delete Recruiter</span>
+    </button>
+  </mat-menu> -->
+</div>

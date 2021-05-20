@@ -1,0 +1,104 @@
+@import '../shared/styles/colors';
+@import '../shared/styles/cards/variables';
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+@include media-breakpoint-down(xs){
+  .card-group__card {
+    border-radius: $card-border-radius;
+    padding: 0px;
+    width: 90%;
+    max-width: 250px;
+    margin-left:auto;
+    margin-right: auto;
+  }
+}
+@include media-breakpoint-up(lg){
+  .col-lg-3{
+    max-width: 250px;
+  }
+  .card-group__card {
+    border-radius: $card-border-radius;
+    padding: 0px;
+    width: 100%;
+  }
+}
+@include media-breakpoint-between(sm,md){
+  .col-sm-6{
+    width: 250px;
+  }
+  .card-group__card {
+    border-radius: $card-border-radius;
+    padding: 0px;
+    width: 100%;
+    max-width: 270px;
+    margin-left:auto;
+    margin-right: auto;
+  }
+}
+.top-vacancies {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-group__loader{
+  margin-left: auto;
+  margin-right: auto;
+}
+.recruiters-card--highlight {
+  box-shadow: 0 0 10px 5px $recruiter-card-highlight-color;
+}
+.vacancy-card--highlight{
+  box-shadow: 0 0 10px 5px $vacancy-card-highlight-color;
+}
+.card-group{
+  display:flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: $card-vert-container-margin;
+  margin-bottom: $card-vert-container-margin;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  min-width: min-content;
+}
+.card-group__recruiters-header-text{
+  font-size: 2rem;
+  color: $recruiters-card-font-color;
+  margin: 0;
+}
+.card-group__vacancies-header-text{
+  font-size: 2rem;
+  color: $vacancies-card-font-color;
+  margin: 0;
+}
+.font-black{
+  color:black;
+}
+.card-group__content{
+  background-color:white;
+  border-bottom-left-radius: $card-border-radius;
+  border-bottom-right-radius: $card-border-radius;
+}
+.card-group__recruiters-header{
+  background-color: $recruiters-header-color;
+  border-top-left-radius: $card-border-radius;
+  border-top-right-radius: $card-border-radius;
+  padding: 1rem;
+}
+.card-group__vacancies-header{
+  background-color: $vacancies-header-color;
+  border-top-left-radius: $card-border-radius;
+  border-top-right-radius: $card-border-radius;
+  padding: 1rem;
+}
+.card-group__card{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: $card-border-radius;
+}
+.footer {
+  text-align: center;
+}
+.no-margins{
+  margin-left: 0;
+  margin-right: 0;
+}

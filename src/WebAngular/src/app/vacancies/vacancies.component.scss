@@ -1,0 +1,43 @@
+@import '../shared/styles/colors';
+@import '../shared/styles/cards/variables';
+.main {
+  margin-top: 5rem;
+}
+.card-group{
+  display:flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: $card-vert-container-margin;
+  margin-bottom: $card-vert-container-margin;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.card-group__header{
+  display: flex;
+  align-items: center;
+  background-color: $vacancies-header-color;
+  border-top-left-radius: $card-border-radius;
+  border-top-right-radius: $card-border-radius;
+  padding: 1rem;
+}
+.card-group__header-text{
+  font-size: 2rem;
+  color: $vacancies-card-font-color;
+  margin: 0;
+}
+.card-group__create-icon{
+  margin-left: auto;
+  color:white;
+}
+.card-group__content{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  padding-bottom: 5px;
+  padding-top: 1.5rem;
+  border-radius: $card-border-radius;
+}
+.card-group__loader{
+  margin-left: auto;
+  margin-right: auto;
+}

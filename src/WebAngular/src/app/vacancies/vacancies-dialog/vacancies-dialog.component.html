@@ -1,0 +1,112 @@
+<div class="main-content-container">
+    <button mat-icon-button class="close-button" [mat-dialog-close]="">
+        <mat-icon class="close-icon" color="warn">close</mat-icon>
+    </button>
+    <h2 mat-dialog-title class="title">{{isCreateVacancy ? 'Create Vacancy' : 'Update Vacancy'}}</h2>
+    <div mat-dialog-content class="main-content">
+        <perfect-scrollbar>
+            <form [formGroup]=vacanciesForm class="dialog-form" (ngSubmit)="submitActionVacancy()">
+                <div class="row">
+                    <div class="col-12 col-sm-6 d-flex flex-column align-items-center">
+                        <div class="avatar-container" (click)="file.click()">
+                            <input hidden class="file-hide" #file accept="image/*" type="file">
+                            <img class="avatar avatar-style" [src]="previewImg || defaultPicture"
+                                alt="Here should be an avatar">
+                            <div class="img-text">
+                                Upload
+                            </div>
+                        </div>
+                        <mat-form-field class="width-70">
+                            <mat-label>Title</mat-label>
+                            <input matInput formControlName="title" />
+                            <mat-error *ngIf="form.title?.errors?.required && form.title?.touched">
+                                It's required field!
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="width-70">
+                            <mat-label>Max Salary</mat-label>
+                            <input matInput formControlName="maxSalary" />
+                            <mat-error *ngIf="form.maxSalary?.errors?.required && form.maxSalary?.touched">
+                                It's required field!
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex flex-column align-items-center">
+                        <mat-form-field class="width-70">
+                            <mat-label>Work Experience</mat-label>
+                            <input matInput formControlName="workExperience" />
+                            <mat-error *ngIf="form.workExperience?.errors?.required && form.workExperience?.touched">
+                                It's required field!
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="width-70">
+                            <mat-select class="dialog-form__select" formControlName="assignedRecruiter">
+                                <mat-option value="">Choose recruiter</mat-option>
+                                <mat-option *ngFor="let recruiter of recruiters" [value]="recruiter">
+                                    {{ recruiter.firstName }} {{ recruiter.lastName }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="form.assignedRecruiter?.errors?.required && form.assignedRecruiter?.touched && form.assignedRecruiter?.value == ''">
+                                It's required field!
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="width-70">
+                            <mat-select class="dialog-form__select" formControlName="jobType">
+                                <mat-option value="">Choose job type</mat-option>
+                                <mat-option *ngFor="let jobType of jobTypes | enumToArray" [value]="jobType">
+                                    {{ jobType }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.obType?.errors?.required && form.jobType?.touched && form.jobType?.value == ''">
+                                It's required field!
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="width-70">
+                            <mat-select class="dialog-form__select" formControlName="vacancyStatus">
+                                <mat-option value="">Choose vacancy status</mat-option>
+                                <mat-option *ngFor="let vacancyStatus of vacancyStatuses | enumToArray"
+                                    [value]="vacancyStatus">
+                                    {{ vacancyStatus }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="form.vacancyStatus?.errors?.required && form.vacancyStatus?.touched && form.vacancyStatus?.value == ''">
+                                It's required field!
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="width-70">
+                            <mat-select class="dialog-form__select" formControlName="seniorityLevel">
+                                <mat-option value="">Choose seniority level</mat-option>
+                                <mat-option *ngFor="let seniorityLevel of seniorityLevels | enumToArray"
+                                    [value]="seniorityLevel">
+                                    {{ seniorityLevel }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="form.seniorityLevel?.errors?.required && form.seniorityLevel?.touched && form.seniorityLevel?.value == ''">
+                                It's required field!
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field class="description-field">
+                            <mat-label>Description</mat-label>
+                            <textarea matInput formControlName="description"></textarea>
+                            <mat-error *ngIf="form.description?.errors?.required && form.description?.touched">
+                                It's required field!
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="dialog-form__actions">
+                    <button mat-raised-button [disabled]="!vacanciesForm.valid || isLoading" color="primary"
+                        type="submit" class="dialog-form__confirm-button">
+                        <mat-spinner diameter="20" *ngIf="isLoading" class="mat-spinner--center"></mat-spinner>
+                        Confirm
+                    </button>
+                </div>
+            </form>
+        </perfect-scrollbar>
+    </div>
+</div>

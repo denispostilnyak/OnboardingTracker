@@ -1,0 +1,8 @@
+@import '../../shared/styles/colors';
+.delete-recruiter-dialog__actions-container{
+  display:flex;
+  justify-content: space-between;
+}
+.danger{
+  color: $danger-color;
+}

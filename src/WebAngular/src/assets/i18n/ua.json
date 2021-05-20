@@ -1,0 +1,15 @@
+{
+    "home": {
+        "tabs": {
+            "home": "Головна",
+            "vacancies": "Вакансії",
+            "recruiters": "Рекрутери",
+            "candidates": "Кандидати"
+        },
+        "topVacanciesTitle": "Топ Вакансії",
+        "topRecruitersTitle": "Топ Рекрутери",
+        "login": "Вхід",
+        "logout": "Вихід",
+        "footer": " Розроблено Давідом Руденко та Денисом Постільняком"
+    }
+}

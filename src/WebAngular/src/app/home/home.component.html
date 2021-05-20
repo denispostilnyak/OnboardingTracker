@@ -1,0 +1,44 @@
+<div class="main">
+  <div class="card-group">
+    <div class="card-group__vacancies-header">
+      <p class="card-group__vacancies-header-text">{{ 'home.topVacanciesTitle' | translate}}</p>
+    </div>
+    <div class="container-fluid card-group__content">
+      <div class="row">
+        <ng-container *ngIf="vacanciesAndRecruiters$ | async as vacanciesAndRecruiters">
+          <div *ngFor="
+              let vacancy of vacanciesAndRecruiters?.vacanciesRequest?.items;
+              let i = index
+            "
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-lg-start justify-content-center align-items-stretch">
+            <div appHighlightTopVacancy [highlightClass]="'vacancy-card--highlight'" [vacancyIndex]="i"
+              class="card-group__card">
+              <app-vacancy-card [vacancy]="vacancy"></app-vacancy-card>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="card-group">
+    <div class="card-group__recruiters-header">
+      <p class="card-group__recruiters-header-text">{{ 'home.topRecruitersTitle' | translate}}</p>
+    </div>
+    <div class="card-group__content container-fluid">
+      <div class="row">
+        <ng-container *ngIf="vacanciesAndRecruiters$ | async as vacanciesAndRecruiters">
+          <div *ngFor="
+              let recruiter of vacanciesAndRecruiters?.recruiterRequest?.items;
+              let i = index
+            "
+            class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-lg-start justify-content-center align-items-stretch">
+            <div appHighlightRecruiter [highlightCondition]="i == 0" [highlightClass]="'recruiters-card--highlight'"
+              class="card-group__card">
+              <app-recruiter-card [recruiter]="recruiter"></app-recruiter-card>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

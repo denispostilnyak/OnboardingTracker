@@ -1,0 +1,12 @@
+<div class="main">
+  <div class="card-group">
+    <div class="card-group__content">
+      <mat-spinner class="card-group__loader" *ngIf="!(recruiters)"></mat-spinner>
+      <div *ngFor="let recruiter of recruiters;">
+        <div>
+          <app-recruiter-list-item (deleteRecruiterEvent)="deleteRecruiter($event)" [recruiter]="recruiter"></app-recruiter-list-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

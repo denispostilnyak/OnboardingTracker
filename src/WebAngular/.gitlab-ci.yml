@@ -1,0 +1,35 @@
+image: docker:latest
+
+stages:
+  - build
+  - deploy
+
+build-web:
+  stage: build
+  image: devoxsoftware/ng-cli
+  artifacts:
+    expire_in: 1 day
+    paths: 
+      - ./src/WebAngular/dist/
+  before_script:
+    - cd ./src/WebAngular/
+    - npm ci
+  script:
+    - ng build --prod
+  only:
+    - master
+    - develop
+  when: manual
+
+ 
+deploy-web:
+  stage: deploy
+  image: microsoft/azure-cli
+  needs: [build-web]
+  script:
+    - az storage blob delete-batch -s "\$web" --connection-string $AZURE_STORAGE_CONNECTION_STRING
+    - az storage blob upload-batch -d "\$web" -s src/WebAngular/dist/ --connection-string $AZURE_STORAGE_CONNECTION_STRING
+  only:
+    - master
+    - develop
+  when: manual

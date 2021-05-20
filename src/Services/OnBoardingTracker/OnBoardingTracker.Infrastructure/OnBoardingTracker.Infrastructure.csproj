@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <NoWarn>1701;1702;1591;SA1200;SA1201;SA1208;SA1210;SA1633;SA1100;SA1600;SA1101;SA1611;SA1519;SA1310;SA1615;SA1503;SA1515;SA1005;SA1009;SA1652;SA1602;CA2007;CA2227;CA1031;CS0114</NoWarn>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <WarningsAsErrors />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AutoMapper\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="AutoMapper\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="AutoMapper\**" />
+    <None Remove="Services\**" />
+    <PackageReference Include="AWSSDK.S3" Version="3.5.3.8" />
+    <PackageReference Include="FirebaseAuthentication.net" Version="3.4.0" />
+    <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+    <PackageReference Include="Imgur.API" Version="5.0.0" />
+    <PackageReference Include="MailKit" Version="2.9.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.9" />
+	  <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+
+</Project>

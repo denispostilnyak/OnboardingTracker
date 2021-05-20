@@ -1,0 +1,15 @@
+{
+    "home": {
+        "tabs": {
+            "home": "Home",
+            "vacancies": "Vacancies",
+            "recruiters": "Recruiters",
+            "candidates": "Candidates"
+        },
+        "topVacanciesTitle": "Top Vacancies",
+        "topRecruitersTitle": "Top Recruiters",
+        "login": "Log in",
+        "logout": "Log out",
+        "footer": " Powered By Postilniak Denis & David Rudenko"
+    }
+}

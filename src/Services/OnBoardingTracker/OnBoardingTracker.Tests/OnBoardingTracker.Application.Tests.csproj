@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<NoWarn>1701;1702;1591;SA1200;SA1311;SA1201;SA1401;SA1208;SA1210;SA1633;SA1100;SA1600;SA1101;SA1611;SA1519;SA1310;SA1615;SA1503;SA1515;SA1005;SA1009;SA1652;SA1602;CA2007;CA2227;CA1031;CS0114</NoWarn>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="coverlet.msbuild" Version="2.9.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="FakeItEasy" Version="6.2.1" />
+		<PackageReference Include="JunitXml.TestLogger" Version="2.1.78" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.9" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+		<PackageReference Include="ReportGenerator" Version="4.7.1" />
+		<PackageReference Include="Shouldly" Version="3.0.2" />
+		<PackageReference Include="xunit" Version="2.4.0" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+		<PackageReference Include="coverlet.collector" Version="1.3.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\OnBoardingTracker.Application\OnBoardingTracker.Application.csproj" />
+	</ItemGroup>
+
+</Project>

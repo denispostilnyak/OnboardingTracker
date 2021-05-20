@@ -1,0 +1,14 @@
+stages:
+  - build
+  
+backend:
+  stage: build
+  trigger:
+    include: src/Services/OnBoardingTracker/.gitlab-ci.yml
+  when: manual
+
+web:
+  stage: build
+  trigger:
+    include: src/WebAngular/.gitlab-ci.yml
+  when: manual

@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>615d0d02-3e22-486b-86e7-529e14889cbd</UserSecretsId>
+		<NoWarn>1701;1702;1591;SA1200;CA1056;SA1118;CA1062;CA1307;SA1201;SA1208;SA1210;SA1633;CA1303;CA2234;SA1300;SA1100;SA1600;SA1101;SA1611;SA1519;SA1310;SA1615;SA1503;SA1515;SA1005;SA1009;SA1652;SA1602;CA2007;CA2227;CA1031;CS0114</NoWarn>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="App.Metrics.AspNetCore.Core" Version="4.1.0" />
+    <PackageReference Include="App.Metrics.AspNetCore.Endpoints" Version="4.1.0" />
+    <PackageReference Include="App.Metrics.AspNetCore.Tracking" Version="4.1.0" />
+    <PackageReference Include="App.Metrics.Formatters.Prometheus" Version="4.1.0" />
+    <PackageReference Include="Auth0.AuthenticationApi" Version="7.1.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.2.0" />
+    <PackageReference Include="MediatR" Version="8.1.0" />
+    <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
+	  <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.1.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="3.1.8" />
+		<PackageReference Include="Serilog" Version="2.10.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+		<PackageReference Include="Serilog.Sinks.Loggly" Version="5.4.0" />
+		<PackageReference Include="Serilog.Sinks.MSSqlServer" Version="5.5.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\OnBoardingTracker.Application\OnBoardingTracker.Application.csproj" />
+		<ProjectReference Include="..\OnBoardingTracker.Infrastructure\OnBoardingTracker.Infrastructure.csproj" />
+		<ProjectReference Include="..\OnBoardingTracker.Persistence\OnBoardingTracker.Persistence.csproj" />
+	</ItemGroup>
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
+
+</Project>

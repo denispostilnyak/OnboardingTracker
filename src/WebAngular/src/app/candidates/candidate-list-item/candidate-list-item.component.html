@@ -1,0 +1,63 @@
+<mat-expansion-panel class="panel">
+  <mat-expansion-panel-header class="header">
+    <mat-panel-title class="panel-title">
+      <img class="candidate-list-item__image" [src]="candidate.profilePicture" />
+      <div class="panel-title__info">
+        <div class="panel-title__info__name">
+          {{ candidate.firstName + " " + candidate.lastName }}
+        </div>
+        <div class="panel-title__info__adittional">
+          <span class="text-muted">
+            <mat-icon>email</mat-icon>
+            <span>{{ candidate.email }}</span>
+          </span>
+          <span class="text-muted d-none d-sm-flex flex-sm-row">
+            <mat-icon >watch_later</mat-icon>
+            {{ candidate.yearsOfExperience }} Yrs
+          </span>
+        </div>
+      </div>
+
+    </mat-panel-title>
+    <mat-panel-description class="description">
+      <a class="d-none d-md-inline mx-2" href="{{candidate.cvUrl}}" download>
+        <button mat-raised-button>
+          <mat-icon>cloud_download</mat-icon> CV</button>
+      </a>
+      <button class="danger mx-2" mat-raised-button (click)="openDeleteDialog()">
+        Delete
+      </button>
+      <button class="edit mx-2" mat-raised-button (click)="openEditDialog()">
+        Edit
+      </button>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-action-row class="d-flex flex-column">
+    <div class="d-flex flex-md-row flex-column justify-content-start">
+      <span class="text-muted"><mat-icon>phone</mat-icon>{{candidate.phoneNumber}}</span>
+      <span class="text-muted"><mat-icon>email</mat-icon>{{candidate.email}}</span>
+      <span class="text-muted" *ngIf="origins[candidate.originId]"><mat-icon>group_work</mat-icon>{{origins[candidate.originId]?.name}}</span>
+
+    </div>
+  </mat-action-row>
+  <mat-action-row class="content" [ngClass]="{'p-0 m-0':!candidate.currentJobInformation}" >
+    <div class="w-100" >
+      <span class="content__information-span">
+        {{ candidate?.currentJobInformation || "" }}
+      </span>
+    </div>
+  </mat-action-row>
+  <mat-action-row
+    class="d-md-none px-2 d-flex flex-row justify-content-between"
+  >
+    <button class="danger mx-0" mat-raised-button (click)="openDeleteDialog()">
+      Delete
+    </button>
+    <a href="{{candidate.cvUrl}}" download>
+      <button mat-raised-button>
+        Download
+        CV</button>
+    </a>
+    <button class="edit" mat-raised-button (click)="openEditDialog()">Edit</button>
+  </mat-action-row>
+</mat-expansion-panel>

@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>Delete Candidate "{{data.firstName + ' ' + data.lastName}}"?</h1>
+<div class="delete-recruiter-dialog__actions-container">
+  <button mat-raised-button [mat-dialog-close]="" >Cancel</button>
+  <button class="danger" [mat-dialog-close]="data" mat-raised-button>Delete</button>
+</div>
+
