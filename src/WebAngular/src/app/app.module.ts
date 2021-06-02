@@ -1,4 +1,3 @@
-import { VacancyModule } from './vacancy/vacancy.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +27,6 @@ import {SharedModule} from './shared/modules/shared/shared.module';
     InterviewModule,
     MaterialComponentsModule,
     HttpClientModule,
-    VacancyModule,
     FontAwesomeModule,
     NavBarModule,
     VacanciesModule,

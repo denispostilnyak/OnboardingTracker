@@ -49,7 +49,7 @@ namespace OnBoardingTracker.Application.Recruiters.Commands
 
                 if (deletedRecruiter.Vacancies.Any() || deletedRecruiter.Interviews.Any())
                 {
-                    throw new ValidationException($"Recruiter with id: {request.Id} has relation with Vacancies.Delete them first");
+                    throw new ValidationException($"Recruiter {deletedRecruiter.FirstName} {deletedRecruiter.LastName} has relation with Vacancies or Interviews. Delete them first and try again");
                 }
 
                 dbContext.Recruiters.Remove(deletedRecruiter);

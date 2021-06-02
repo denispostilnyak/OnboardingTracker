@@ -67,7 +67,7 @@ namespace OnBoardingTracker.WebApi.Controllers.v1.Vacancy
                 VacancyStatusId = createVacancyModel.VacancyStatusId
             };
 
-            if (createVacancyModel.VacancyPicture.Length != 0)
+            if (createVacancyModel.VacancyPicture != null && createVacancyModel.VacancyPicture?.Length != 0)
             {
                 applicationModel.FileStream = createVacancyModel.VacancyPicture.OpenReadStream();
                 applicationModel.FileName = createVacancyModel.VacancyPicture.FileName;

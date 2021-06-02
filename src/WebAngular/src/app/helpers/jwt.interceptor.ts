@@ -27,14 +27,8 @@ export class JwtInterceptor implements HttpInterceptor {
     });
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
-        let errorMessage = '';
-        if (err.error instanceof ErrorEvent) {
-          errorMessage = `Error: ${err.message}`;
-        } else {
-          errorMessage = `Error Code: ${err.status}\nMessage: ${err.message}`;
-        }
-        this.toastr.error(errorMessage);
-        return throwError(errorMessage);
+        this.toastr.error(err?.error?.Message);
+        return throwError(err?.error?.Message);
       })
     );
   }

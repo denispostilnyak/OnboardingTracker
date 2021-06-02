@@ -16,7 +16,7 @@ const auth: Auth0LockAuthOptions = {
 
 export const auth0LockOptions: Auth0LockConstructorOptions = {
     theme: {
-        logo: 'https://devoxblob.blob.core.windows.net/timex/logo.png',
+        logo: 'https://devoxblobs.blob.core.windows.net/general/logo.png',
         primaryColor: '#3c4349'
     },
     auth: auth,

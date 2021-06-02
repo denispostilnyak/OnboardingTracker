@@ -30,7 +30,7 @@ export class VacanciesDialogComponent implements OnInit {
   isCreateVacancy = false;
   formData = new FormData();
   editVacancy!: Vacancy;
-  defaultPicture = 'https://bit.ly/2KBf9c0';
+  defaultPicture = 'https://previews.123rf.com/images/arcady31/arcady311508/arcady31150800034/44235258-job-vacancy-rubber-stamp.jpg';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -97,17 +97,23 @@ export class VacanciesDialogComponent implements OnInit {
     });
   }
 
-  initFormDataVacancy(): void {
+  async initFormDataVacancy(): Promise<void> {
     if (this.isCreateVacancy === false) {
       this.formData.append('id', this.editVacancy.id + '');
     }
     let uploadFileName = this.file?.name || this.editVacancy?.vacancyPictureUrl;
 
+    let blob;
+    if(!uploadFileName) {
+      uploadFileName = this.defaultPicture;
+      blob = await fetch(this.defaultPicture).then(r => r.blob());
+    }
+
     this.formData.append('title', this.form.title?.value);
     this.formData.append('description', this.form.description?.value);
     this.formData.append('maxSalary', this.form.maxSalary?.value);
     this.formData.append('workExperience', this.form.workExperience?.value);
-    this.formData.append('vacancyPicture', this.file || new Blob(), uploadFileName || '');
+    this.formData.append('vacancyPicture', this.file || blob || new Blob(), uploadFileName || '');
     this.formData.append('assignedRecruiterId', this.form.assignedRecruiter?.value.id);
     let jobType = this.jobTypes[this.form.jobType?.value];
     this.formData.append('jobTypeId', jobType);
@@ -126,11 +132,17 @@ export class VacanciesDialogComponent implements OnInit {
       this.vacancyService.createVacancy(this.formData).subscribe((vacancy: Vacancy) => {
         this.isLoading = false;
         this.dialogRef.close(vacancy);
+      },
+      (e: any) => {
+        this.isLoading = false;
       });
     } else {
       this.vacancyService.updateVacancy(this.formData).subscribe((vacancy: Vacancy) => {
         this.isLoading = false;
         this.dialogRef.close(vacancy);
+      },
+      (e: any) => {
+        this.isLoading = false;
       });
     }
   }

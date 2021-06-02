@@ -103,7 +103,7 @@
                     <button mat-raised-button [disabled]="!vacanciesForm.valid || isLoading" color="primary"
                         type="submit" class="dialog-form__confirm-button">
                         <mat-spinner diameter="20" *ngIf="isLoading" class="mat-spinner--center"></mat-spinner>
-                        Confirm
+                        {{'vacancies.submitButton' | translate}}
                     </button>
                 </div>
             </form>
